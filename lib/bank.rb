@@ -7,8 +7,10 @@ class Bank
   end
 
   def deposit(amount)
-    return "Please enter a positive number to deposit" if amount < 0
-    
+    amount = amount.to_f
+    return "Please enter a number > 0 to deposit" unless amount.is_a? Float
+    return "Please enter a number > 0 to deposit" unless amount > 0
+
     @balance += amount
   end
 end
