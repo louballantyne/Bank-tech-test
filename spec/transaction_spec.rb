@@ -6,7 +6,11 @@ describe Transaction do
   describe 'a transaction' do
     it 'has a date' do
       transaction = Transaction.new
-      expect(transaction.date).to eq Time.now.strftime("%Y-%m-%d %H:%M:%S")
+      expect(transaction.date).to eq Time.now.strftime("%Y-%m-%d")
+    end
+    it 'has a time' do
+      transaction = Transaction.new
+      expect(transaction.time).to eq Time.now.strftime("%H:%M:%S")
     end
     it 'creates a transaction with a debit and no credit' do
       transaction = Transaction.new(debit: 4)
