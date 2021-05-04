@@ -40,6 +40,9 @@ describe Statement do
       bank_with_withdrawal
       expect(statement.print_statement).to include "800"
     end
-
+    it 'correctly prints a full statement' do
+      bank_with_withdrawal
+      expect(statement.print_statement).to eq "date || credit || debit || balance\n#{Time.now.strftime("%Y-%m-%d")} || || 800.00 || 200.00"
+    end
   end
 end
