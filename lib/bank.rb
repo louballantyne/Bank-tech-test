@@ -10,7 +10,12 @@ class Bank
     amount = amount.to_f
     return "Please enter a number > 0 to deposit" unless amount > 0
     return "Please enter a number with no more than 2 decimal places to deposit" if amount.to_s.split('.').last.size > 2
-    
+
     @balance += amount
+  end
+
+  def withdraw(amount)
+    return "Insufficient funds" if amount > @balance
+
   end
 end

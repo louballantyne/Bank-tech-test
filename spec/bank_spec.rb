@@ -3,13 +3,13 @@ require 'bank'
 describe Bank do
   alias_method :bank, :subject
 
-  describe 'balance' do
+  describe 'Balance' do
     it 'returns an integer' do
       expect(bank.balance).to be_an Integer
     end
   end
 
-  describe 'deposit' do
+  describe 'Deposit' do
     it 'increases the balance by 500 if 500 is deposited' do
       expect{ bank.deposit(500) }.to change { bank.balance }.by 500
     end
@@ -29,6 +29,12 @@ describe Bank do
     end
     it 'does not allow the user to deposit values with more than 2 dp' do
       expect(bank.deposit(87.235325)).to eq("Please enter a number with no more than 2 decimal places to deposit")
+    end
+  end
+
+  context 'Withdrawing with a zero balance' do
+    it 'user is unable to withdraw money' do
+      expect(bank.withdraw(100)).to eq("Insufficient funds")
     end
   end
 end
