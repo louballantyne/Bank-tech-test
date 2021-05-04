@@ -27,5 +27,8 @@ describe Bank do
     it 'only allows the user to deposit integer values' do
       expect(bank.deposit("sdkgj")).to eq("Please enter a number > 0 to deposit")
     end
+    it 'does not allow the user to deposit values with more than 2 dp' do
+      expect(bank.deposit(87.235325)).to eq("Please enter a number with no more than 2 decimal places to deposit")
+    end
   end
 end
