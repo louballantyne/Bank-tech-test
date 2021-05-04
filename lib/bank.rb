@@ -2,6 +2,7 @@ class Bank
 
   def initialize
     @balance = 0
+    @statement = Statement.new
   end
   def balance
     @balance
@@ -13,6 +14,8 @@ class Bank
     return "Please enter a number with no more than 2 decimal places to deposit" if amount.to_s.split('.').last.size > 2
 
     @balance += amount
+    @statement.transactions << Transaction.new(credit: amount, balance: @balance)
+    return @balance
   end
 
   def withdraw(amount)
@@ -20,9 +23,9 @@ class Bank
     return "Please enter a number > 0 to withdraw" unless amount > 0
     return "Insufficient funds" if amount > @balance
     return "Please enter a number with no more than 2 decimal places to withdraw" if amount.to_s.split('.').last.size > 2
-    
+
     @balance -= amount
-    Transaction.new(debit: amount, balance: @balance)
+    @statement.transactions << Transaction.new(debit: amount, balance: @balance)
     return @balance
   end
 end

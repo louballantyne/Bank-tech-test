@@ -63,5 +63,9 @@ describe Bank do
       expect(Transaction).to receive(:new)
       bank.withdraw(100)
     end
+    it 'Transaction receives new when a deposit is initiated' do
+      expect(Transaction).to receive(:new)
+      bank.deposit(100)
+    end
   end
 end
