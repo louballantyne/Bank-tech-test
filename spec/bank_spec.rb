@@ -24,7 +24,7 @@ describe Bank do
     it 'user is unable to deposit a negative number' do
       expect(bank.deposit(-10)).to eq("Please enter a number > 0 to deposit")
     end
-    it 'only allows the user to deposit integer values' do
+    it 'only allows the user to deposit integer or float values' do
       expect(bank.deposit("sdkgj")).to eq("Please enter a number > 0 to deposit")
     end
     it 'does not allow the user to deposit values with more than 2 dp' do
@@ -46,6 +46,9 @@ describe Bank do
     end
     it 'user is unable to withdraw a negative number' do
       expect(bank.withdraw(-10)).to eq "Please enter a number > 0 to withdraw"
+    end
+    it 'only allows the user to withdraw integer or float values' do
+      expect(bank.withdraw("hihihi")).to eq "Please enter a number > 0 to withdraw"
     end
   end
 end

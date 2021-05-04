@@ -16,6 +16,7 @@ class Bank
   end
 
   def withdraw(amount)
+    amount = amount.to_f
     return "Please enter a number > 0 to withdraw" unless amount > 0
     return "Insufficient funds" if amount > @balance
 
