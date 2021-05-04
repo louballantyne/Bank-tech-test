@@ -1,5 +1,6 @@
 INPUT               ||    OUTPUT
 -------------------------------------------------
+# Bank #
 balance                 0
 // Deposits
 deposit(500)            500
@@ -24,3 +25,7 @@ withdraw(56.12412)||    invalid withdrawal
 --starting with 600
 withdraw(2000)   ||     debit exceeds balance
 withdraw(200)    ||     400
+
+
+# Transaction #
+transaction: debit, credit, date
