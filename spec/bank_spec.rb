@@ -21,7 +21,7 @@ describe Bank do
     it 'allows the user to deposit a number with two decimal places' do
       expect{ bank.deposit(80.00) }.to change { bank.balance }.by 80
     end
-    it 'will not allow a user to deposit a negative number' do
+    it 'user is unable to deposit a negative number' do
       expect(bank.deposit(-10)).to eq("Please enter a number > 0 to deposit")
     end
     it 'only allows the user to deposit integer values' do
@@ -39,10 +39,13 @@ describe Bank do
   end
 
   context 'Withdrawing with a balance of 1000' do
-    before { bank.instance_variable_set(:@balance, 1000) } 
+    before { bank.instance_variable_set(:@balance, 1000) }
 
     it 'user is able to withdraw an amount less than their balance' do
       expect(bank.withdraw(200)).to eq 800
+    end
+    it 'user is unable to withdraw a negative number' do
+      expect(bank.withdraw(-10)).to eq "Please enter a number > 0 to withdraw"
     end
   end
 end
