@@ -1,8 +1,11 @@
 require 'bank'
 require 'transaction'
+require 'helper_methods'
+require 'statement'
 
 describe Bank do
   alias_method :bank, :subject
+  let(:statement) {double 'statement'}
 
   describe 'Balance' do
     it 'returns an integer' do
@@ -66,6 +69,15 @@ describe Bank do
     it 'Transaction receives new when a deposit is initiated' do
       expect(Transaction).to receive(:new)
       bank.deposit(100)
+    end
+  end
+
+  context 'a user deposits 500 and wants to view their statement' do
+    it 'calls statement to print a statement' do
+      bank.instance_variable_set(:@statement, statement)
+      allow(statement).to receive(:print_statement)
+      expect(statement).to receive(:print_statement)
+      bank.view_statement
     end
   end
 end

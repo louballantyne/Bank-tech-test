@@ -28,4 +28,8 @@ class Bank
     @statement.transactions << Transaction.new(debit: amount, balance: @balance)
     return @balance
   end
+
+  def view_statement
+    @statement.print_statement
+  end
 end
