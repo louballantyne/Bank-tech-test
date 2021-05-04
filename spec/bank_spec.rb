@@ -63,12 +63,16 @@ describe Bank do
     before { bank.instance_variable_set(:@balance, 1000) }
 
     it 'Transaction receives new when a withdrawal is requested' do
-      expect(Transaction).to receive(:new)
+      transaction = class_spy(Transaction)
+      stub_const('Transaction', transaction)
       bank.withdraw(100)
+      expect(transaction).to have_received(:new)
     end
     it 'Transaction receives new when a deposit is initiated' do
-      expect(Transaction).to receive(:new)
+      transaction = class_spy(Transaction)
+      stub_const('Transaction', transaction)
       bank.deposit(100)
+      expect(transaction).to have_received(:new)
     end
   end
 
