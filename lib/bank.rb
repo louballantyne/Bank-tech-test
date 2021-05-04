@@ -1,4 +1,5 @@
 class Bank
+
   def initialize
     @balance = 0
   end
@@ -17,5 +18,6 @@ class Bank
   def withdraw(amount)
     return "Insufficient funds" if amount > @balance
 
+    @balance -= amount
   end
 end

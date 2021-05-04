@@ -37,4 +37,12 @@ describe Bank do
       expect(bank.withdraw(100)).to eq("Insufficient funds")
     end
   end
+
+  context 'Withdrawing with a balance of 1000' do
+    before { bank.instance_variable_set(:@balance, 1000) } 
+
+    it 'user is able to withdraw an amount less than their balance' do
+      expect(bank.withdraw(200)).to eq 800
+    end
+  end
 end

@@ -20,3 +20,4 @@ withdraw(56.12412)||    invalid withdrawal
 
 --starting with 600
 withdraw(2000)   ||     debit exceeds balance
+withdraw(200)    ||     400
