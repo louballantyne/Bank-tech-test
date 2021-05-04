@@ -22,6 +22,10 @@ describe Statement do
       bank_with_deposit
       expect(statement.print_statement).to include "500"
     end
+    it 'prints a statement containing the balance following a previous deposit' do
+      bank_with_deposit
+      expect(statement.print_statement).to include "1500"
+    end
   end
 end
 

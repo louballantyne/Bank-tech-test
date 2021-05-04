@@ -9,6 +9,7 @@ attr_accessor :transactions
     @transactions.each do |transaction|
       printed_statement << "\n#{transaction.date} ||"
       printed_statement << print_credit(transaction.credit)
+      printed_statement << "\n#{transaction.balance} ||"
     end
     return printed_statement
   end
