@@ -6,7 +6,7 @@ describe Statement do
   bank = Bank.new
 
 
-  context 'statement returns no transactions when there have been no transactions' do
+  context 'when there have been no transactions' do
     it "returns 'date || credit || debit || balance'" do
       expect(statement.print_statement).to eq 'date || credit || debit || balance'
     end
@@ -17,7 +17,7 @@ describe Statement do
       expect(statement.transactions.first).to be_an Transaction
     end
   end
-  context 'statement prints a statement containing one transaction with a credit' do
+  context 'when there has been one transaction with a credit' do
     it 'prints a statement containing a date from a previous deposit' do
       bank_with_deposit
       expect(statement.print_statement).to include "#{Time.now.strftime("%Y-%m-%d")}"
@@ -35,7 +35,7 @@ describe Statement do
       expect(statement.print_statement).to eq "date || credit || debit || balance\n#{Time.now.strftime("%Y-%m-%d")} || 500.00 || || 1500.00"
     end
   end
-  context 'statement prints a statement containing one transaction with a debit' do
+  context 'when there has been one transaction with a debit' do
     it 'prints a statement containing a debit from a previous deposit' do
       bank_with_withdrawal
       expect(statement.print_statement).to include "800"
@@ -43,6 +43,12 @@ describe Statement do
     it 'correctly prints a full statement' do
       bank_with_withdrawal
       expect(statement.print_statement).to eq "date || credit || debit || balance\n#{Time.now.strftime("%Y-%m-%d")} || || 800.00 || 200.00"
+    end
+  end
+  context 'when there have been three transactions' do
+    it 'correctly prints a statement containing all transactions' do
+      bank_with_3_transactions
+      expect(statement.print_statement).to eq "date || credit || debit || balance\n#{Time.now.strftime("%Y-%m-%d")} || || 800.00 || 200.00\n#{Time.now.strftime("%Y-%m-%d")} || 12000.00 || || 12200.00\n#{Time.now.strftime("%Y-%m-%d")} || || 5000.00 || 7200.00"
     end
   end
 end
