@@ -1,4 +1,5 @@
 require 'bank'
+require 'transaction'
 
 describe Bank do
   alias_method :bank, :subject
@@ -52,6 +53,15 @@ describe Bank do
     end
     it 'does not allow the user to withdraw values with more than 2 dp' do
       expect(bank.withdraw(56.123124)).to eq "Please enter a number with no more than 2 decimal places to withdraw"
+    end
+  end
+
+  describe 'Deposits and withdrawals create a new transaction' do
+    before { bank.instance_variable_set(:@balance, 1000) }
+
+    it 'Transaction receives new when a withdrawal is requested' do
+      expect(Transaction).to receive(:new)
+      bank.withdraw(100)
     end
   end
 end
