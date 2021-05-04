@@ -50,5 +50,8 @@ describe Bank do
     it 'only allows the user to withdraw integer or float values' do
       expect(bank.withdraw("hihihi")).to eq "Please enter a number > 0 to withdraw"
     end
+    it 'does not allow the user to withdraw values with more than 2 dp' do
+      expect(bank.withdraw(56.123124)).to eq "Please enter a number with no more than 2 decimal places to withdraw"
+    end
   end
 end
