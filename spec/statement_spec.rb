@@ -1,4 +1,5 @@
 require 'statement'
+require 'helper_methods'
 
 describe Statement do
   alias_method :statement, :subject
@@ -10,17 +11,20 @@ describe Statement do
       expect(statement.print_statement).to eq 'date || credit || debit || balance'
     end
     it 'stores transactions in an array' do
-      bank.instance_variable_set(:@balance, 1000)
-      bank.instance_variable_set(:@statement, statement)
-
-      bank.deposit(500)
+      bank_with_deposit
       expect(statement.transactions.first).to be_an Transaction
     end
-    it 'prints a statement containing a previous deposit' do
-      bank.instance_variable_set(:@balance, 1000)
-      bank.instance_variable_set(:@statement, statement)
-      bank.deposit(500)
-      expect(statement.print_statement).to eq "date || credit || debit || balance\n#{Time.now.strftime("%Y-%m-%d")} || 500 || || 1500"
+    it 'prints a statement containing a date from a previous deposit' do
+      bank_with_deposit
+      expect(statement.print_statement).to include "#{Time.now.strftime("%Y-%m-%d")}"
+    end
+    it 'prints a statement containing a date from a previous deposit' do
+      bank_with_deposit
+      expect(statement.print_statement).to include "#{Time.now.strftime("%Y-%m-%d")}"
     end
   end
 end
+
+
+
+#       expect(statement.print_statement).to include "date || credit || debit || balance\n#{Time.now.strftime("%Y-%m-%d")} || 500 || || 1500"
