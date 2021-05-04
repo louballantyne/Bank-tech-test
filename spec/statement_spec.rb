@@ -16,10 +16,11 @@ describe Statement do
       bank.deposit(500)
       expect(statement.transactions.first).to be_an Transaction
     end
-    xit 'prints a statement containing a previous deposit' do
+    it 'prints a statement containing a previous deposit' do
       bank.instance_variable_set(:@balance, 1000)
+      bank.instance_variable_set(:@statement, statement)
       bank.deposit(500)
-      expect(statement.print_statement).to eq 'date || credit || debit || balance'
+      expect(statement.print_statement).to eq "date || credit || debit || balance\n#{Time.now.strftime("%Y-%m-%d")} || 500 || || 1500"
     end
   end
 end

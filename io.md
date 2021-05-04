@@ -28,4 +28,4 @@ withdraw(200)    ||     400
 
 
 # Transaction #
-transaction: debit, credit, date
+transaction: debit, credit, date, time
