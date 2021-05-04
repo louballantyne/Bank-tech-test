@@ -9,7 +9,8 @@ attr_accessor :transactions
     @transactions.each do |transaction|
       printed_statement << "\n#{transaction.date} ||"
       printed_statement << print_credit(transaction.credit)
-      printed_statement << "\n#{transaction.balance} ||"
+      printed_statement << " ||"
+      printed_statement << " #{'%.2f' % transaction.balance}"
     end
     return printed_statement
   end
@@ -18,13 +19,8 @@ end
 
 def print_credit(credit)
   if credit
-    "#{credit} ||"
+    " #{'%.2f' % credit} ||"
   else
     " ||"
   end
 end
-
-
-
-
-#{}"date || credit || debit || balance\n#{Time.now.strftime("%Y-%m-%d")} || 500 || || 1500"

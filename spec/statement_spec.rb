@@ -26,9 +26,9 @@ describe Statement do
       bank_with_deposit
       expect(statement.print_statement).to include "1500"
     end
+    it 'correctly prints a full statement' do
+      bank_with_deposit
+      expect(statement.print_statement).to eq "date || credit || debit || balance\n#{Time.now.strftime("%Y-%m-%d")} || 500.00 || || 1500.00"
+    end
   end
 end
-
-
-
-#       expect(statement.print_statement).to include "date || credit || debit || balance\n#{Time.now.strftime("%Y-%m-%d")} || 500 || || 1500"
