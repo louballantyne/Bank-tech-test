@@ -1,7 +1,5 @@
 require 'bank'
-require 'transaction'
 require 'helper_methods'
-require 'statement'
 
 describe Bank do
   alias_method :bank, :subject

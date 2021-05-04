@@ -1,5 +1,5 @@
 class Statement
-attr_accessor :transactions
+  attr_accessor :transactions
   def initialize
     @transactions = []
   end
@@ -16,7 +16,7 @@ attr_accessor :transactions
   end
 
   def print_credit(credit)
-    if credit > 0
+    if credit.positive?
       " #{'%.2f' % credit} ||"
     else
       " ||"
@@ -24,7 +24,7 @@ attr_accessor :transactions
   end
 
   def print_debit(debit)
-    if debit > 0
+    if debit.positive?
       " #{'%.2f' % debit} ||"
     else
       " ||"
