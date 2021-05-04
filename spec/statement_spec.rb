@@ -3,8 +3,6 @@ require 'helper_methods'
 
 describe Statement do
   alias_method :statement, :subject
-  bank = Bank.new
-  let(:bank_double) {double 'bank'}
 
   context 'when there have been no transactions' do
     it "returns 'date || credit || debit || balance'" do
