@@ -8,7 +8,7 @@ attr_accessor :transactions
     printed_statement = 'date || credit || debit || balance'
     @transactions.each do |transaction|
       printed_statement << "\n#{transaction.date} ||"
-      #printed_statement << "#{transaction.credit}" if transaction.credit
+      printed_statement << print_credit(transaction.credit)
     end
     return printed_statement
   end
@@ -17,6 +17,9 @@ end
 
 def print_credit(credit)
   if credit
+    "#{credit} ||"
+  else
+    " ||"
   end
 end
 

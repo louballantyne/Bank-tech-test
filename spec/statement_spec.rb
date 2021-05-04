@@ -18,9 +18,9 @@ describe Statement do
       bank_with_deposit
       expect(statement.print_statement).to include "#{Time.now.strftime("%Y-%m-%d")}"
     end
-    it 'prints a statement containing a date from a previous deposit' do
+    it 'prints a statement containing a credit from a previous deposit' do
       bank_with_deposit
-      expect(statement.print_statement).to include "#{Time.now.strftime("%Y-%m-%d")}"
+      expect(statement.print_statement).to include "500"
     end
   end
 end
