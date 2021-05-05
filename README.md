@@ -4,7 +4,7 @@ This is a first version of my completed Bank Tech Test in Ruby. It stores a bala
 
 Simplecov reports 100% test coverage.
 
-![Screenshot](Screenshot.png)
+![Screenshot](Screenshot_irb.png)
 
 ## Installation
 
@@ -33,6 +33,6 @@ bank.balance # Would return 100
 
 I have tried to refactor the code to make it as DRY as possible. I have not made any of the methods private, however the user cannot alter the balance without making a withdrawal or a deposit. Transactions are stored in an array as a transaction object. Printing a statement is the responsibility of its own class. Transactions are stored in an array in this class to prevent the user from easily being able to access them.
 
-The bank class's 'view_statement' method calls a method within the statement class. It keeps this code hidden from the user. 'deposit' and 'withdraw 'methods in the bank class share a method to check that the input is valid. 
+The bank class's 'view_statement' method calls a method within the statement class. It keeps this code hidden from the user. 'deposit' and 'withdraw 'methods in the bank class share a method to check that the input is valid.
 
 Once you have completed the challenge and feel happy with your solution, here's a form to help you reflect on the quality of your code: https://docs.google.com/forms/d/1Q-NnqVObbGLDHxlvbUfeAC7yBCf3eCjTmz6GOqC9Aeo/edit
