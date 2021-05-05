@@ -12,30 +12,30 @@ describe Bank do
 
   describe 'Deposit' do
     it 'increases the balance by 500 if 500 is deposited' do
-      expect{ bank.deposit(500) }.to change { bank.balance }.by 500
+      expect{ bank.send(:deposit, 500) }.to change { bank.balance }.by 500
     end
     it 'increases the balance to 1500 with two separate deposits of 500 and 1000' do
-      bank.deposit(500)
-      bank.deposit(1000)
+      bank.send(:deposit, 500)
+      bank.send(:deposit, 1000)
       expect(bank.balance).to eq 1500
     end
     it 'allows the user to deposit a number with two decimal places' do
-      expect{ bank.deposit(80.00) }.to change { bank.balance }.by 80
+      expect{ bank.send(:deposit, 80.00) }.to change { bank.balance }.by 80
     end
     it 'user is unable to deposit a negative number' do
-      expect(bank.deposit(-10)).to eq("Please enter a number > 0 to deposit")
+      expect(bank.send(:deposit, -10)).to eq("Please enter a number > 0 to deposit")
     end
     it 'only allows the user to deposit integer or float values' do
-      expect(bank.deposit("sdkgj")).to eq("Please enter a number > 0 to deposit")
+      expect(bank.send(:deposit, "sdgsdg")).to eq("Please enter a number > 0 to deposit")
     end
     it 'does not allow the user to deposit values with more than 2 dp' do
-      expect(bank.deposit(87.235325)).to eq("Please enter a number with no more than 2 decimal places to deposit")
+      expect(bank.send(:deposit, 87.235325)).to eq("Please enter a number with no more than 2 decimal places to deposit")
     end
   end
 
   context 'Withdrawing with a zero balance' do
     it 'user is unable to withdraw money' do
-      expect(bank.withdraw(100)).to eq("Insufficient funds")
+      expect(bank.send(:withdraw, 100)).to eq("Insufficient funds")
     end
   end
 
@@ -43,16 +43,16 @@ describe Bank do
     before { bank.instance_variable_set(:@balance, 1000) }
 
     it 'user is able to withdraw an amount less than their balance' do
-      expect { bank.withdraw(200) }.to change { bank.balance }.from(1000).to(800)
+      expect { bank.send(:withdraw, 200) }.to change { bank.balance }.from(1000).to(800)
     end
     it 'user is unable to withdraw a negative number' do
-      expect(bank.withdraw(-10)).to eq "Please enter a number > 0 to withdraw"
+      expect(bank.send(:withdraw, -10)).to eq "Please enter a number > 0 to withdraw"
     end
     it 'only allows the user to withdraw integer or float values' do
-      expect(bank.withdraw("hihihi")).to eq "Please enter a number > 0 to withdraw"
+      expect(bank.send(:withdraw, "hihihi")).to eq "Please enter a number > 0 to withdraw"
     end
     it 'does not allow the user to withdraw values with more than 2 dp' do
-      expect(bank.withdraw(56.123124)).to eq "Please enter a number with no more than 2 decimal places to withdraw"
+      expect(bank.send(:withdraw, 56.3462346)).to eq "Please enter a number with no more than 2 decimal places to withdraw"
     end
   end
 
@@ -62,13 +62,13 @@ describe Bank do
     it 'Transaction receives new when a withdrawal is requested' do
       transaction = class_spy(Transaction)
       stub_const('Transaction', transaction)
-      bank.withdraw(100)
+      bank.send(:withdraw, 100)
       expect(transaction).to have_received(:new)
     end
     it 'Transaction receives new when a deposit is initiated' do
       transaction = class_spy(Transaction)
       stub_const('Transaction', transaction)
-      bank.deposit(100)
+      bank.send(:deposit, 100)
       expect(transaction).to have_received(:new)
     end
   end

@@ -9,6 +9,12 @@ class Bank
     @statement = Statement.new
   end
 
+  def view_statement
+    @statement.print_statement
+  end
+
+  private
+
   def deposit(amount)
     amount = amount.to_f
     return "Please enter a number > 0 to deposit" unless amount.positive?
@@ -32,7 +38,4 @@ class Bank
     @statement.transactions << Transaction.new(debit: amount, balance: @balance)
   end
 
-  def view_statement
-    @statement.print_statement
-  end
 end
