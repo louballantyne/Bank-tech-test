@@ -1,5 +1,4 @@
 require 'bank'
-require 'helper_methods'
 
 describe Bank do
   alias_method :bank, :subject
@@ -44,7 +43,7 @@ describe Bank do
     before { bank.instance_variable_set(:@balance, 1000) }
 
     it 'user is able to withdraw an amount less than their balance' do
-      expect(bank.withdraw(200)).to eq 800
+      expect { bank.withdraw(200) }.to change { bank.balance }.from(1000).to(800)
     end
     it 'user is unable to withdraw a negative number' do
       expect(bank.withdraw(-10)).to eq "Please enter a number > 0 to withdraw"

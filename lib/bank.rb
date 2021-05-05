@@ -1,3 +1,6 @@
+require_relative 'statement'
+require_relative 'transaction'
+
 class Bank
   attr_reader :balance
 
@@ -15,7 +18,6 @@ class Bank
 
     @balance += amount
     @statement.transactions << Transaction.new(credit: amount, balance: @balance)
-    return @balance
   end
 
   def withdraw(amount)
@@ -28,7 +30,6 @@ class Bank
 
     @balance -= amount
     @statement.transactions << Transaction.new(debit: amount, balance: @balance)
-    return @balance
   end
 
   def view_statement
