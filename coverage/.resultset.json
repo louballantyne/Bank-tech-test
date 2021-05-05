@@ -2,6 +2,8 @@
   "RSpec": {
     "coverage": {
       "/Users/lou/Projects/Makers-Work/Week10/Bank-tech-test/spec/add_money_feature_spec.rb": [
+        null,
+        null,
         1,
         1,
         1,
@@ -20,6 +22,8 @@
         null
       ],
       "/Users/lou/Projects/Makers-Work/Week10/Bank-tech-test/lib/bank.rb": [
+        null,
+        null,
         1,
         1,
         null,
@@ -91,6 +95,8 @@
         null
       ],
       "/Users/lou/Projects/Makers-Work/Week10/Bank-tech-test/lib/transaction.rb": [
+        null,
+        null,
         1,
         1,
         1,
@@ -102,6 +108,8 @@
         null
       ],
       "/Users/lou/Projects/Makers-Work/Week10/Bank-tech-test/spec/bank_spec.rb": [
+        null,
+        null,
         1,
         null,
         1,
@@ -188,6 +196,8 @@
         null
       ],
       "/Users/lou/Projects/Makers-Work/Week10/Bank-tech-test/spec/statement_spec.rb": [
+        null,
+        null,
         1,
         1,
         null,
@@ -237,6 +247,8 @@
         null
       ],
       "/Users/lou/Projects/Makers-Work/Week10/Bank-tech-test/spec/helper_methods.rb": [
+        null,
+        null,
         1,
         4,
         4,
@@ -258,6 +270,8 @@
         null
       ],
       "/Users/lou/Projects/Makers-Work/Week10/Bank-tech-test/spec/transaction_spec.rb": [
+        null,
+        null,
         1,
         null,
         1,
@@ -286,6 +300,6 @@
         null
       ]
     },
-    "timestamp": 1620210157
+    "timestamp": 1620210366
   }
 }

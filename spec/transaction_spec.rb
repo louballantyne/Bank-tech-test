@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'transaction'
 
 describe Transaction do
@@ -6,7 +8,7 @@ describe Transaction do
   describe 'a transaction' do
     it 'has a date' do
       transaction = Transaction.new
-      expect(transaction.date).to eq Time.now.strftime("%Y-%m-%d")
+      expect(transaction.date).to eq Time.now.strftime('%Y-%m-%d')
     end
     it 'creates a transaction with a debit and no credit' do
       transaction = Transaction.new(debit: 4)

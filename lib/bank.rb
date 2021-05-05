@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'statement'
 require_relative 'transaction'
 
@@ -24,7 +26,7 @@ class Bank
   def withdraw(amount)
     amount = check_input_valid(amount)
     return amount unless amount.is_a? Float
-    return "Insufficient funds" if amount > @balance
+    return 'Insufficient funds' if amount > @balance
 
     @balance -= amount
     @statement.transactions << Transaction.new(debit: amount, balance: @balance)
@@ -32,11 +34,11 @@ class Bank
 
   def check_input_valid(amount)
     amount = amount.to_f
-    return "Please enter a number > 0" unless amount.positive?
+    return 'Please enter a number > 0' unless amount.positive?
     if amount.to_s.split('.').last.size > 2
-      return "Please enter a number with no more than 2 decimal places"
+      return 'Please enter a number with no more than 2 decimal places'
     end
 
-    return amount
+    amount
   end
 end
