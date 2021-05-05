@@ -2,7 +2,7 @@ require 'bank'
 
 describe Bank do
   alias_method :bank, :subject
-  let(:statement) {double 'statement'}
+  let(:statement) { double 'statement' }
 
   describe 'Balance' do
     it 'returns an integer' do
@@ -12,7 +12,7 @@ describe Bank do
 
   describe 'Deposit' do
     it 'increases the balance by 500 if 500 is deposited' do
-      expect{ bank.send(:deposit, 500) }.to change { bank.balance }.by 500
+      expect { bank.send(:deposit, 500) }.to change { bank.balance }.by 500
     end
     it 'increases the balance to 1500 with two separate deposits of 500 and 1000' do
       bank.send(:deposit, 500)
@@ -20,7 +20,7 @@ describe Bank do
       expect(bank.balance).to eq 1500
     end
     it 'allows the user to deposit a number with two decimal places' do
-      expect{ bank.send(:deposit, 80.00) }.to change { bank.balance }.by 80
+      expect { bank.send(:deposit, 80.00) }.to change { bank.balance }.by 80
     end
     it 'user is unable to deposit a negative number' do
       expect(bank.send(:deposit, -10)).to eq("Please enter a number > 0")

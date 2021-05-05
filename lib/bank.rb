@@ -28,7 +28,6 @@ class Bank
     return amount unless amount.is_a? Float
     return "Insufficient funds" if amount > @balance
 
-
     @balance -= amount
     @statement.transactions << Transaction.new(debit: amount, balance: @balance)
   end
@@ -42,5 +41,4 @@ class Bank
 
     return amount
   end
-
 end
