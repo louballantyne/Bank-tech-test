@@ -1,8 +1,7 @@
-# frozen_string_literal: true
-
 require_relative 'statement'
 require_relative 'transaction'
 
+# Stores balance and responsible for deposits and withdrawals
 class Bank
   attr_reader :balance
 
@@ -20,7 +19,8 @@ class Bank
     return amount unless amount.is_a? Float
 
     @balance += amount
-    @statement.transactions << Transaction.new(credit: amount, balance: @balance)
+    @statement.transactions <<
+      Transaction.new(credit: amount, balance: @balance)
   end
 
   def withdraw(amount)
@@ -29,7 +29,8 @@ class Bank
     return 'Insufficient funds' if amount > @balance
 
     @balance -= amount
-    @statement.transactions << Transaction.new(debit: amount, balance: @balance)
+    @statement.transactions <<
+      Transaction.new(debit: amount, balance: @balance)
   end
 
   def check_input_valid(amount)

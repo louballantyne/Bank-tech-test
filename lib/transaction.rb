@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
+# Generates transactions
 class Transaction
   attr_reader :date, :debit, :credit, :balance
   def initialize(credit: 0, debit: 0, balance: 0)

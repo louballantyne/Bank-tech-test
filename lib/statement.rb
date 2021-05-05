@@ -1,5 +1,7 @@
+# Generates a printed statement of transactions and dates
 class Statement
   attr_accessor :transactions
+
   def initialize
     @transactions = []
   end
@@ -10,16 +12,20 @@ class Statement
       printed_statement << "\n#{transaction.date} ||"
       printed_statement << print_transaction(transaction.credit)
       printed_statement << print_transaction(transaction.debit)
-      printed_statement << " #{'%.2f' % transaction.balance}"
+      printed_statement << " #{format_currency(transaction.balance)}"
     end
     puts printed_statement
   end
 
   def print_transaction(amount)
     if amount.positive?
-      " #{'%.2f' % amount} ||"
+      " #{format_currency(amount)} ||"
     else
-      " ||"
+      ' ||'
     end
+  end
+
+  def format_currency(value)
+    format('%.2<value>f', value: value.to_s)
   end
 end
