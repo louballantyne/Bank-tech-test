@@ -23,13 +23,13 @@ describe Bank do
       expect{ bank.send(:deposit, 80.00) }.to change { bank.balance }.by 80
     end
     it 'user is unable to deposit a negative number' do
-      expect(bank.send(:deposit, -10)).to eq("Please enter a number > 0 to deposit")
+      expect(bank.send(:deposit, -10)).to eq("Please enter a number > 0")
     end
     it 'only allows the user to deposit integer or float values' do
-      expect(bank.send(:deposit, "sdgsdg")).to eq("Please enter a number > 0 to deposit")
+      expect(bank.send(:deposit, "sdgsdg")).to eq("Please enter a number > 0")
     end
     it 'does not allow the user to deposit values with more than 2 dp' do
-      expect(bank.send(:deposit, 87.235325)).to eq("Please enter a number with no more than 2 decimal places to deposit")
+      expect(bank.send(:deposit, 87.235325)).to eq("Please enter a number with no more than 2 decimal places")
     end
   end
 
@@ -46,13 +46,13 @@ describe Bank do
       expect { bank.send(:withdraw, 200) }.to change { bank.balance }.from(1000).to(800)
     end
     it 'user is unable to withdraw a negative number' do
-      expect(bank.send(:withdraw, -10)).to eq "Please enter a number > 0 to withdraw"
+      expect(bank.send(:withdraw, -10)).to eq "Please enter a number > 0"
     end
     it 'only allows the user to withdraw integer or float values' do
-      expect(bank.send(:withdraw, "hihihi")).to eq "Please enter a number > 0 to withdraw"
+      expect(bank.send(:withdraw, "hihihi")).to eq "Please enter a number > 0"
     end
     it 'does not allow the user to withdraw values with more than 2 dp' do
-      expect(bank.send(:withdraw, 56.3462346)).to eq "Please enter a number with no more than 2 decimal places to withdraw"
+      expect(bank.send(:withdraw, 56.3462346)).to eq "Please enter a number with no more than 2 decimal places"
     end
   end
 

@@ -16,26 +16,31 @@ class Bank
   private
 
   def deposit(amount)
-    amount = amount.to_f
-    return "Please enter a number > 0 to deposit" unless amount.positive?
-    if amount.to_s.split('.').last.size > 2
-      return "Please enter a number with no more than 2 decimal places to deposit"
-    end
+    amount = check_input_valid(amount)
+    return amount unless amount.is_a? Float
 
     @balance += amount
     @statement.transactions << Transaction.new(credit: amount, balance: @balance)
   end
 
   def withdraw(amount)
-    amount = amount.to_f
-    return "Please enter a number > 0 to withdraw" unless amount.positive?
+    amount = check_input_valid(amount)
+    return amount unless amount.is_a? Float
     return "Insufficient funds" if amount > @balance
-    if amount.to_s.split('.').last.size > 2
-      return "Please enter a number with no more than 2 decimal places to withdraw"
-    end
+
 
     @balance -= amount
     @statement.transactions << Transaction.new(debit: amount, balance: @balance)
+  end
+
+  def check_input_valid(amount)
+    amount = amount.to_f
+    return "Please enter a number > 0" unless amount.positive?
+    if amount.to_s.split('.').last.size > 2
+      return "Please enter a number with no more than 2 decimal places"
+    end
+
+    return amount
   end
 
 end
