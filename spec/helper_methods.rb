@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 def stubbed_transactions_1_deposit
   transaction = double('transaction', date: Time.now.strftime('%Y-%m-%d'), debit: 0, credit: 500, balance: 1500)
   transactions = [transaction]
