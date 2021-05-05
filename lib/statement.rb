@@ -12,7 +12,7 @@ class Statement
       printed_statement << print_transaction(transaction.debit)
       printed_statement << " #{'%.2f' % transaction.balance}"
     end
-    return printed_statement
+    puts printed_statement
   end
 
   def print_transaction(amount)
