@@ -1,33 +1,34 @@
-Bank tech test
+# Bank tech test
 
-Today, you'll practice doing a tech test.
+This is a first version of my completed Bank Tech Test in Ruby. It stores a balance and allows the user to withdraw and deposit funds. It prints a statement listing transactions.
 
-For most tech tests, you'll essentially have unlimited time. This practice session is about producing the best code you can when there is a minimal time pressure.
+Simplecov reports 100% test coverage.
 
-You'll get to practice your OO design and TDD skills.
+## Installation
 
-You'll work alone, and you'll also review your own code so you can practice reflecting on and improving your own work.
+* Clone this Repo
+* cd to the project directory
+* Bundle install (dependencies are rspec, simplecov and rubocop for testing, coverage and linting)
 
-Specification
+## Running tests
 
-Requirements
+* cd to the project directory
+* rspec to run tests
 
-You should be able to interact with your code via a REPL like IRB or the JavaScript console. (You don't need to implement a command line interface that takes input from STDIN.)
-Deposits, withdrawal.
-Account statement (date, amount, balance) printing.
-Data can be kept in memory (it doesn't need to be stored to a database or anything).
-Acceptance criteria
+## Usage
+``bash
+irb -r './lib/bank.rb'
+```
+```ruby
+bank = Bank.new
+bank.deposit(200) # Adds 200 to the balance
+bank.withdraw(100) # Adds 100 to the balance
+bank.view_statement # Would return a statement in the following format: "date || credit || debit || balance\n2021-05-05 || 200.00 || || 200.00\n2021-05-05 || || 100.00 || 100.00"
+bank.balance # Would return 100
+```
 
-Given a client makes a deposit of 1000 on 10-01-2012
-And a deposit of 2000 on 13-01-2012
-And a withdrawal of 500 on 14-01-2012
-When she prints her bank statement
-Then she would see
+## About this project
 
-date || credit || debit || balance
-14/01/2012 || || 500.00 || 2500.00
-13/01/2012 || 2000.00 || || 3000.00
-10/01/2012 || 1000.00 || || 1000.00
-Self-assessment
+I have tried to refactor the code to make it as DRY as possible. I have not made any of the methods private, however the user cannot alter the balance without making a withdrawal or a deposit. Transactions are stored in an array as a transaction object. Printing a statement is the responsibility of its own class.
 
 Once you have completed the challenge and feel happy with your solution, here's a form to help you reflect on the quality of your code: https://docs.google.com/forms/d/1Q-NnqVObbGLDHxlvbUfeAC7yBCf3eCjTmz6GOqC9Aeo/edit

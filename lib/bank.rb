@@ -13,8 +13,6 @@ class Bank
     @statement.print_statement
   end
 
-  private
-
   def deposit(amount)
     amount = check_input_valid(amount)
     return amount unless amount.is_a? Float
