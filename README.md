@@ -18,9 +18,9 @@ Simplecov reports 100% test coverage.
 * rspec to run tests
 
 ## Usage
-``bash
+
 irb -r './lib/bank.rb'
-```
+
 ```ruby
 bank = Bank.new
 bank.deposit(200) # Adds 200 to the balance
