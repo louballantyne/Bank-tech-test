@@ -31,7 +31,7 @@ bank.balance # Would return 100
 
 ## About this project
 
-I have tried to refactor the code to make it as DRY as possible. I have not made any of the methods private, however the user cannot alter the balance without making a withdrawal or a deposit. Transactions are stored in an array as a transaction object. Printing a statement is the responsibility of its own class. Transactions are stored in an array in this class to prevent the user from easily being able to access them.
+I have tried to refactor the code to make it as DRY as possible. I have not made any of the methods private, however the user cannot alter the balance without making a withdrawal or a deposit. Transactions are stored in an array, in the statement class, as a transaction object. Printing a statement is the responsibility of the statement class. Transactions are stored in this class to prevent the user from easily being able to access them.
 
 The bank class's 'view_statement' method calls a method within the statement class. It keeps this code hidden from the user. 'deposit' and 'withdraw 'methods in the bank class share a method to check that the input is valid.
 
