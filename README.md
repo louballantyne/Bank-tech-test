@@ -1,6 +1,6 @@
 # Bank tech test
 
-This is a first version of my completed Bank Tech Test in Ruby. It stores a balance and allows the user to withdraw and deposit funds. It prints a statement listing transactions.
+This is the second version of my completed Bank Tech Test in Ruby. It stores a balance and allows the user to withdraw and deposit funds. It prints a statement listing transactions.
 
 Simplecov reports 100% test coverage.
 
