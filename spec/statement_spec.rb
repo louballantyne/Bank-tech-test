@@ -39,9 +39,9 @@ describe Statement do
     end
   end
   context 'when there have been three transactions' do
-    it 'correctly prints a statement containing all transactions (stubbed)' do
+    it 'correctly prints a statement containing all transactions (stubbed), in reverse chronological order' do
       stubbed_transactions_3
-      expect { statement.print_statement }.to output(/#{Regexp.quote("date || credit || debit || balance\n#{Time.now.strftime("%Y-%m-%d")} || || 800.00 || 200.00\n#{Time.now.strftime("%Y-%m-%d")} || 12000.00 || || 12200.00\n#{Time.now.strftime("%Y-%m-%d")} || || 5000.00 || 7200.00")}/).to_stdout
+      expect { statement.print_statement }.to output(/#{Regexp.quote("date || credit || debit || balance\n#{Time.now.strftime("%Y-%m-%d")} || || 5000.00 || 7200.00\n#{Time.now.strftime("%Y-%m-%d")} || 12000.00 || || 12200.00\n#{Time.now.strftime("%Y-%m-%d")} || || 800.00 || 200.00")}/).to_stdout
     end
   end
 end

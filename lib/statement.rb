@@ -8,7 +8,7 @@ class Statement
 
   def print_statement
     printed_statement = 'date || credit || debit || balance'
-    @transactions.each do |transaction|
+    @transactions.reverse.each do |transaction|
       printed_statement << "\n#{transaction.date} ||"
       printed_statement << print_transaction(transaction.credit)
       printed_statement << print_transaction(transaction.debit)
