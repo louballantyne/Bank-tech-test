@@ -40,18 +40,14 @@ bank.balance # Would return 100
 
 ## About this project
 
-I have tried to refactor the code to make it as DRY as possible. I have not made any of the methods private, however the user cannot alter the balance without making a withdrawal or a deposit. Transactions are stored in an array, in the statement class, as a transaction object. Printing a statement is the responsibility of the statement class. Transactions are stored in this class to prevent the user from easily being able to access them.
+I began this project by creating the 'bank' class. This seemed like the obvious home for withdrawals and deposits, and the place in which the balance could be managed. It seemed clear to me that statements would not be generated here, and therefore that transactions would also be stored elsewhere. I felt that this would prevent tampering, as users have to withdraw and deposit money, but this should be the only way to manipulate the balance. As such, there are no private methods, because I didn't feel that at this stage there needed to be. The bank class's 'view_statement' method calls a method within the statement class. It keeps this code hidden from the user, but means that it is still easily-accessible. 'deposit' and 'withdraw 'methods in the bank class share a method to check that the input is valid, helping to keep the code DRY.
 
-The bank class's 'view_statement' method calls a method within the statement class. It keeps this code hidden from the user. 'deposit' and 'withdraw 'methods in the bank class share a method to check that the input is valid.
+Transactions are stored at the time that withdrawals and deposits are made. I originally had a method to return the balance to the user at the end of each transaction, but removed this as I felt that it was not a specified part of the program. Moreover, as the transaction is returned (implicitly), the user is able to see their balance by reading this. I do, however, feel that it would be more user-friendly if only the balance was displayed.
 
-Linting
+I wanted each transaction to be an object. This makes transactions easy to manipulate and means that it is simple to determine what each attribute is. As the only current use for transactions is to display them afterwards, they are stored in an array. I originally included a 'time' attribute for each transaction, but ultimately decided that this was not necessary because transactions are already added to the array in the order that they are created. This facilitates displaying transactions in chronological order. I feel that ultimately it would be more elegant to have a 'time' attribute, which could also be displayed on a statement, in addition to where the transaction was carried out.
 
-Rubocop threw errors about the way currency was formatted. However, the syntax it favoured was not a currently widely-used way of doing things. For this reason, the 'relaxed-rubocop' gem has been included. Furthermore, Rubocop wanted the inclusion of the 'frozen_string_literals: true' at the top of files. However, this was opposed to the proper functioning of the program. As such, Rubocop is instructed to ignore this in the yml file.
+The statement class has the responsibility of printing a statement. As such, it also handles things such as formatting the currency appropriately. To extend this further, the currency type (e.g. GBP, EUR) could be displayed. I made the decision to reject transactions that had more than 2 decimal places. This is done in the bank class. However, I believe that in some industries transactions such as these are carried out, but rounded (e.g. currency conversion, stocks and share sales). It might be that a future iteration of the program could perform this rounding, rather than rejecting numbers with a greater number of decimal places.
 
-Once you have completed the challenge and feel happy with your solution, here's a form to help you reflect on the quality of your code: https://docs.google.com/forms/d/1Q-NnqVObbGLDHxlvbUfeAC7yBCf3eCjTmz6GOqC9Aeo/edit
+## A note about Linting
 
-
-
------
-mock out date
-extend explanation of Readme
+Rubocop threw errors about the way currency was formatted. However, the syntax it favoured was not a widely-used way of doing things. For this reason, the 'relaxed-rubocop' gem has been included. Furthermore, Rubocop wanted the inclusion of the 'frozen_string_literals: true' at the top of files. However, this was opposed to the proper functioning of the program. As such, Rubocop is instructed to ignore this in the yml file.
