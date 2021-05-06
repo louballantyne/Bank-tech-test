@@ -26,6 +26,6 @@ class Statement
   end
 
   def format_currency(value)
-    '%.2f'% value
+    '%.2f' % value
   end
 end

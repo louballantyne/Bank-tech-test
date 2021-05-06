@@ -58,7 +58,7 @@ describe Bank do
 
   describe 'Deposits and withdrawals create a new transaction' do
     before { bank.instance_variable_set(:@balance, 1000) }
-
+    
     it 'Transaction receives new when a withdrawal is requested' do
       transaction = class_spy(Transaction)
       stub_const('Transaction', transaction)

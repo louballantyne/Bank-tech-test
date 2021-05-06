@@ -6,11 +6,20 @@ Simplecov reports 100% test coverage.
 
 ![Screenshot](Screenshot_irb.png)
 
+## Dependencies
+
+* Rspec (testing)
+* Simplecov (test coverage)
+* Simplecov-console (test coverage)
+* Rubocop (linting)
+* Rubocop-rspec (linting)
+* Relaxed-Rubocop (linting rules)
+
 ## Installation
 
 * Clone this Repo
 * cd to the project directory
-* Bundle install (dependencies are rspec, simplecov and rubocop for testing, coverage and linting)
+* Bundle install
 
 ## Running tests
 
@@ -25,7 +34,7 @@ irb -r './lib/bank.rb'
 bank = Bank.new
 bank.deposit(200) # Adds 200 to the balance
 bank.withdraw(100) # Adds 100 to the balance
-bank.view_statement # Would return a statement in the following format: "date || credit || debit || balance\n2021-05-05 || 200.00 || || 200.00\n2021-05-05 || || 100.00 || 100.00"
+bank.view_statement # Would return a statement in the following format: "date || credit || debit || balance\n2021-05-05 || || 100.00 || 100.00\n2021-05-05 || 200.00 || || 200.00"
 bank.balance # Would return 100
 ```
 
@@ -35,4 +44,14 @@ I have tried to refactor the code to make it as DRY as possible. I have not made
 
 The bank class's 'view_statement' method calls a method within the statement class. It keeps this code hidden from the user. 'deposit' and 'withdraw 'methods in the bank class share a method to check that the input is valid.
 
+Linting
+
+Rubocop threw errors about the way currency was formatted. However, the syntax it favoured was not a currently widely-used way of doing things. For this reason, the 'relaxed-rubocop' gem has been included. Furthermore, Rubocop wanted the inclusion of the 'frozen_string_literals: true' at the top of files. However, this was opposed to the proper functioning of the program. As such, Rubocop is instructed to ignore this in the yml file.
+
 Once you have completed the challenge and feel happy with your solution, here's a form to help you reflect on the quality of your code: https://docs.google.com/forms/d/1Q-NnqVObbGLDHxlvbUfeAC7yBCf3eCjTmz6GOqC9Aeo/edit
+
+
+
+-----
+mock out date
+extend explanation of Readme

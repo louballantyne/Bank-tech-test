@@ -12,7 +12,7 @@ describe Statement do
   context 'when there has been one transaction with a credit' do
     it 'prints a statement containing a date from a previous deposit' do
       stubbed_transactions_1_deposit
-      expect { statement.print_statement }.to output(/#{Regexp.quote("date || credit || debit || balance\n#{Time.now.strftime("%Y-%m-%d")} || 500.00 || || 1500.00")}/).to_stdout
+      expect { statement.print_statement }.to output(/#{Regexp.quote("date || credit || debit || balance\n2021-05-05 || 500.00 || || 1500.00")}/).to_stdout
     end
     it 'prints a statement containing a credit from a previous deposit' do
       stubbed_transactions_1_deposit
@@ -24,7 +24,7 @@ describe Statement do
     end
     it 'correctly prints a full statement' do
       stubbed_transactions_1_deposit
-      expect { statement.print_statement }.to output(/#{Regexp.quote("date || credit || debit || balance\n#{Time.now.strftime("%Y-%m-%d")} || 500.00 || || 1500.00")}/).to_stdout
+      expect { statement.print_statement }.to output(/#{Regexp.quote("date || credit || debit || balance\n2021-05-05 || 500.00 || || 1500.00")}/).to_stdout
     end
   end
 
@@ -35,13 +35,13 @@ describe Statement do
     end
     it 'correctly prints a full statement' do
       stubbed_transactions_1_withdrawal
-      expect { statement.print_statement }.to output(/#{Regexp.quote("date || credit || debit || balance\n#{Time.now.strftime("%Y-%m-%d")} || || 800.00 || 200.00")}/).to_stdout
+      expect { statement.print_statement }.to output(/#{Regexp.quote("date || credit || debit || balance\n2021-05-05 || || 800.00 || 200.00")}/).to_stdout
     end
   end
   context 'when there have been three transactions' do
     it 'correctly prints a statement containing all transactions (stubbed), in reverse chronological order' do
       stubbed_transactions_3
-      expect { statement.print_statement }.to output(/#{Regexp.quote("date || credit || debit || balance\n#{Time.now.strftime("%Y-%m-%d")} || || 5000.00 || 7200.00\n#{Time.now.strftime("%Y-%m-%d")} || 12000.00 || || 12200.00\n#{Time.now.strftime("%Y-%m-%d")} || || 800.00 || 200.00")}/).to_stdout
+      expect { statement.print_statement }.to output(/#{Regexp.quote("date || credit || debit || balance\n2021-05-05 || || 5000.00 || 7200.00\n2021-05-05 || 12000.00 || || 12200.00\n2021-05-05 || || 800.00 || 200.00")}/).to_stdout
     end
   end
 end
