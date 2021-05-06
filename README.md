@@ -4,7 +4,7 @@ This is a first version of my completed Bank Tech Test in Ruby. It stores a bala
 
 Simplecov reports 100% test coverage.
 
-![Screenshot](Screenshot_irb.png)
+![Screenshot](Screenshot.png)
 
 ## Dependencies
 
