@@ -3,3 +3,8 @@ require: rubocop-rspec
 AllCops:
   Exclude:
     - 'spec/*'
+inherit_gem:
+  relaxed-rubocop: .rubocop.yml
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
