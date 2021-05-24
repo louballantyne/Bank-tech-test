@@ -29,7 +29,8 @@ describe Bank do
       expect(bank.send(:deposit, 'sdgsdg')).to eq('Please enter a number > 0')
     end
     it 'does not allow the user to deposit values with more than 2 dp' do
-      expect(bank.send(:deposit, 87.235325)).to eq('Please enter a number with no more than 2 decimal places')
+      output = 'Please enter a number with no more than 2 decimal places'
+      expect(bank.send(:deposit, 87.235325)).to eq(output)
     end
   end
 
@@ -52,7 +53,8 @@ describe Bank do
       expect(bank.send(:withdraw, 'hihihi')).to eq 'Please enter a number > 0'
     end
     it 'does not allow the user to withdraw values with more than 2 dp' do
-      expect(bank.send(:withdraw, 56.3462346)).to eq 'Please enter a number with no more than 2 decimal places'
+      output = 'Please enter a number with no more than 2 decimal places'
+      expect(bank.send(:withdraw, 56.3462346)).to eq output
     end
   end
 
