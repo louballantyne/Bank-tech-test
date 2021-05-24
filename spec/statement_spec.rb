@@ -14,7 +14,7 @@ describe Statement do
     end
 
     it 'prints a statement containing a date from a previous deposit' do
-      expect { statement.print_statement([@transaction]) }.to output(/#{Regexp.quote("date || credit || debit || balance\n2021-05-05 || 500.00 || || 1500.00")}/).to_stdout
+      expect { statement.print_statement([@transaction]) }.to output(/#{Regexp.quote("date || credit || debit || balance\n2021/05/05 || 500.00 || || 1500.00")}/).to_stdout
     end
     it 'prints a statement containing a credit from a previous deposit' do
       expect { statement.print_statement([@transaction]) }.to output(/#{Regexp.quote("500")}/).to_stdout
@@ -23,7 +23,7 @@ describe Statement do
       expect { statement.print_statement([@transaction]) }.to output(/#{Regexp.quote("1500")}/).to_stdout
     end
     it 'correctly prints a full statement' do
-      expect { statement.print_statement([@transaction]) }.to output(/#{Regexp.quote("date || credit || debit || balance\n2021-05-05 || 500.00 || || 1500.00")}/).to_stdout
+      expect { statement.print_statement([@transaction]) }.to output(/#{Regexp.quote("date || credit || debit || balance\n2021/05/05 || 500.00 || || 1500.00")}/).to_stdout
     end
   end
 
@@ -35,7 +35,7 @@ describe Statement do
       expect { statement.print_statement([@transaction]) }.to output(/#{Regexp.quote("800")}/).to_stdout
     end
     it 'correctly prints a full statement' do
-      expect { statement.print_statement([@transaction]) }.to output(/#{Regexp.quote("date || credit || debit || balance\n2021-05-05 || || 800.00 || 200.00")}/).to_stdout
+      expect { statement.print_statement([@transaction]) }.to output(/#{Regexp.quote("date || credit || debit || balance\n2021/05/05 || || 800.00 || 200.00")}/).to_stdout
     end
   end
   context 'when there have been three transactions' do
@@ -44,7 +44,7 @@ describe Statement do
       transaction2 = double('transaction', date: Time.new(2021,5,5), debit: 0, credit: 12_000, balance: 12_200)
       transaction3 = double('transaction', date: Time.new(2021,5,5), debit: 5000, credit: 0, balance: 7200)
       transactions = [transaction1, transaction2, transaction3]
-      expect { statement.print_statement(transactions) }.to output(/#{Regexp.quote("date || credit || debit || balance\n2021-05-05 || || 5000.00 || 7200.00\n2021-05-05 || 12000.00 || || 12200.00\n2021-05-05 || || 800.00 || 200.00")}/).to_stdout
+      expect { statement.print_statement(transactions) }.to output(/#{Regexp.quote("date || credit || debit || balance\n2021/05/05 || || 5000.00 || 7200.00\n2021/05/05 || 12000.00 || || 12200.00\n2021/05/05 || || 800.00 || 200.00")}/).to_stdout
     end
   end
 end
