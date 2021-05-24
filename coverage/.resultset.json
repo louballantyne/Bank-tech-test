@@ -28,9 +28,9 @@
         1,
         null,
         1,
-        16,
-        16,
-        16,
+        18,
+        18,
+        18,
         null,
         null,
         1,
@@ -64,6 +64,12 @@
         null,
         null,
         11,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
         null,
         null
       ],
@@ -191,6 +197,18 @@
         1,
         null,
         null,
+        null,
+        1,
+        1,
+        1,
+        0,
+        null,
+        null,
+        1,
+        1,
+        0,
+        null,
+        null,
         null
       ],
       "/Users/lou/Projects/Makers-Work/Week10/Bank-tech-test/spec/statement_spec.rb": [
@@ -277,6 +295,6 @@
         null
       ]
     },
-    "timestamp": 1621864487
+    "timestamp": 1621864947
   }
 }

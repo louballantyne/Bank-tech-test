@@ -43,4 +43,10 @@ class Bank
 
     amount
   end
+
+  private
+
+  def transactions=(transactions)
+    @transactions = transactions
+  end
 end
