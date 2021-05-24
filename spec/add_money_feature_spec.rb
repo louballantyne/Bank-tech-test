@@ -13,7 +13,11 @@ describe Bank do
       bank.deposit(2000)
       allow(Time).to receive(:now).and_return Time.parse("2012-01-14 11:24:30 +0100")
       bank.withdraw(500)
-      expect { bank.view_statement }.to output(/#{Regexp.quote("date || credit || debit || balance\n2012/01/14 || || 500.00 || 2500.00\n2012/01/13 || 2000.00 || || 3000.00\n2012/01/10 || 1000.00 || || 1000.00")}/).to_stdout
+      output =  "date || credit || debit || balance"
+                "2012/01/14 || || 500.00 || 2500.00"
+                "2012/01/13 || 2000.00 || || 3000.00"
+                "2012/01/10 || 1000.00 || || 1000.00"
+      expect { bank.view_statement }.to output(/#{Regexp.quote(output)}/).to_stdout
     end
   end
 end
