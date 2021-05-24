@@ -28,7 +28,7 @@ Simplecov reports 100% test coverage.
 
 ## Usage
 
-irb -r './lib/bank.rb'
+irb -r './lib/texttest_fixture.rb'
 
 ```ruby
 bank = Bank.new

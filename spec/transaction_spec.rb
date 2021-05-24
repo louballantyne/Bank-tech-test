@@ -9,7 +9,7 @@ describe Transaction do
     end
     it 'has a date' do
       transaction = Transaction.new
-      expect(transaction.date).to eq '2021-05-06'
+      expect(transaction.date).to eq Time.parse('2021-05-06 11:24:30.000000000 +0100')
     end
     it 'creates a transaction with a debit and no credit' do
       transaction = Transaction.new(debit: 4)
