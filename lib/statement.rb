@@ -1,14 +1,9 @@
  # Generates a printed statement of transactions and dates
 class Statement
-  attr_accessor :transactions
 
-  def initialize
-    @transactions = []
-  end
-
-  def print_statement
+  def print_statement(transactions)
     printed_statement = 'date || credit || debit || balance'
-    @transactions.reverse.each do |transaction|
+    transactions.reverse.each do |transaction|
       printed_statement << "\n#{transaction.date.strftime('%Y-%m-%d')} ||"
       printed_statement << print_transaction(transaction.credit)
       printed_statement << print_transaction(transaction.debit)

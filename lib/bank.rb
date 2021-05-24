@@ -8,10 +8,11 @@ class Bank
   def initialize
     @balance = 0
     @statement = Statement.new
+    @transactions = []
   end
 
   def view_statement
-    @statement.print_statement
+    @statement.print_statement(@transactions)
   end
 
   def deposit(amount)
@@ -19,7 +20,7 @@ class Bank
     return amount unless amount.is_a? Float
 
     @balance += amount
-    @statement.transactions <<
+    @transactions <<
       Transaction.new(credit: amount, balance: @balance)
   end
 
@@ -29,7 +30,7 @@ class Bank
     return 'Insufficient funds' if amount > @balance
 
     @balance -= amount
-    @statement.transactions <<
+    @transactions <<
       Transaction.new(debit: amount, balance: @balance)
   end
 
